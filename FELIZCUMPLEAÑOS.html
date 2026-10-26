@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Mildred</title>
+	<style>
+		:root {
+			--ink: #422f42;
+			--muted: #806d7e;
+			--pink: #e98ba5;
+			--peach: #ffd5bd;
+			--paper: #fffaf8;
+		}
+		* { box-sizing: border-box; }
+		body {
+			margin: 0;
+			color: var(--ink);
+			background: var(--paper);
+			font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+		}
+		.hero {
+			min-height: 440px;
+			padding: 76px 24px 84px;
+			display: grid;
+			place-items: center;
+			text-align: center;
+			position: relative;
+			overflow: hidden;
+			background: radial-gradient(ellipse at 50% 110%, #fff 0, transparent 45%),
+				linear-gradient(135deg, #ffe1d2, #f9c7d4 55%, #e9d7f5);
+		}
+		.hero::before, .hero::after {
+			content: "✦";
+			position: absolute;
+			color: #fff9;
+			font-size: 110px;
+		}
+		.hero::before { top: 30px; left: 9%; transform: rotate(-15deg); }
+		.hero::after { right: 10%; bottom: 15px; font-size: 78px; }
+		.hero-content { position: relative; z-index: 1; max-width: 760px; }
+		.eyebrow {
+			margin: 0 0 14px;
+			color: #9e5574;
+			font-size: .78rem;
+			font-weight: 800;
+			letter-spacing: .2em;
+			text-transform: uppercase;
+		}
+		h1 {
+			margin: 0;
+			color: #57354f;
+			font-family: Georgia, "Times New Roman", serif;
+			font-size: clamp(3rem, 9vw, 6.3rem);
+			font-weight: 500;
+			line-height: .98;
+		}
+		h1 span { color: #d66f91; font-style: italic; }
+		.intro { margin: 22px auto 0; max-width: 540px; color: #715c70; font-size: 1.08rem; line-height: 1.7; }
+		.heart { display: block; margin-top: 25px; color: #d66f91; font-size: 25px; }
+		main { width: min(1120px, calc(100% - 36px)); margin: 0 auto; padding: 68px 0 82px; }
+		.section-heading { margin: 0 auto 38px; text-align: center; }
+		.section-heading h2 {
+			margin: 0 0 10px;
+			font-family: Georgia, "Times New Roman", serif;
+			font-size: clamp(2rem, 5vw, 3rem);
+			font-weight: 500;
+		}
+		.section-heading p { margin: 0; color: var(--muted); line-height: 1.6; }
+		.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+		.card {
+			overflow: hidden;
+			border: 1px solid #f1e5e8;
+			border-radius: 18px;
+			background: #fff;
+			box-shadow: 0 10px 28px #7043580d;
+			transition: transform .2s ease, box-shadow .2s ease;
+		}
+		.card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px #70435818; }
+		.photo {
+			height: 225px;
+			position: relative;
+			display: grid;
+			place-items: center;
+			overflow: hidden;
+			background: linear-gradient(135deg, #f8d8df, #ffe8d8);
+		}
+		.photo::after {
+			content: "♡";
+			position: absolute;
+			color: #fff9;
+			font-size: 74px;
+			font-weight: 300;
+			pointer-events: none;
+		}
+		.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+		.photo.is-placeholder { color: #a66f83; font-size: .85rem; letter-spacing: .08em; }
+		.photo.is-placeholder::before { content: attr(data-label); }
+		.card-copy { padding: 21px 22px 23px; }
+		.card-copy h3 { margin: 0 0 10px; color: #bd6583; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; }
+		.card-copy p { margin: 0; color: #665664; font-family: Georgia, "Times New Roman", serif; font-size: 1.04rem; line-height: 1.65; }
+		footer { padding: 32px 20px; background: #f9e9ed; color: #806d7e; text-align: center; font-size: .9rem; }
+		footer strong { color: #b65e7d; }
+		@media (max-width: 850px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+		@media (max-width: 560px) {
+			.hero { min-height: 390px; padding: 65px 20px; }
+			.hero::before { left: 2%; font-size: 72px; }
+			.hero::after { right: 3%; font-size: 58px; }
+			main { width: min(100% - 28px, 430px); padding: 52px 0 60px; }
+			.cards { grid-template-columns: 1fr; gap: 18px; }
+			.photo { height: 245px; }
+		}
+		@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+	</style>
+</head>
+<body>
+	<header class="hero">
+		<div class="hero-content">
+			<h1>Por quienes <span>Darian todo por ti</span></h1>
+			<p class="intro">Mildred, Con cariño, Entre TODOS:</p>
+			<span class="heart" aria-hidden="true">♡</span>
+		</div>
+	</header>
+
+	<main>
+		<section aria-labelledby="messages-title">
+			<div class="section-heading">
+				<h2 id="messages-title">Mensajitos</h2>
+				<p>Un pequeño mensaje de todos quienes te quieren mildred</p>
+			</div>
+			<div class="cards">
+				<!-- Cambia fotos/foto-01.jpg por la ruta de cada foto y personaliza nombres y mensajes. -->
+				<article class="card"><div class="photo"><img src="Alexander.jpeg" alt="Recuerdo con Amiga 1" loading="lazy"></div><div class="card-copy"><h3>Alexander</h3><p>¡Feliz cumpleaños mildred! Te quiero muchisimo al igual que todos tus amigos, Todas las personas que estan aqui son las personas quienes harian cualquier favor y harian lo que fuera por ti, Haz sido una gran amiga desde que te conocimos, Cada uno teniendo una forma diferente de conocerte pero de igual forma, Siendo de la forma mas bonita, Yo te quiero mildred.</p></div></article>
+				<article class="card"><div class="photo"><img src="Jacinto.jpeg" alt="Recuerdo con Amiga 2" loading="lazy"></div><div class="card-copy"><h3>Jacinto</h3><p>Detrás de todas las risas siempre habrán momentos para reflexionar, hoy prefiero decir que te quiero, pues detrás de bromas siempre fuimos compañeros, y hoy, mas amigos que nunca. Te quiere Jacinto 🫂</p></div></article>
+				<article class="card"><div class="photo"><img src="Yuzeth.jpeg" alt="Recuerdo con Amiga 3" loading="lazy"></div><div class="card-copy"><h3>Yuzeth</h3><p>A veces me pongo a pensar en la suerte tan grande que tengo de coincidir contigo en esta vida, y no encuentro palabras suficientes para agradecerle al destino por haber puesto a una persona tan maravillosa en mi camino, eres la personita más linda que he conocido, con un corazón enorme y súper bonito, de esos que ya casi no hay. Tienes una forma de ser tan única, tan noble y tan especial, que es imposible no quererte con todo el corazón, eres una amiga muy especial para mi y no tienes ni la más mínima idea de lo mucho que importas para mi, eres de las mejores amistades que eh tenido y de verdad agradezco muchísimo tu amistad.💗 Te mereces absolutamente todo lo bonito del universo, cada cosa maravillosa que la vida pueda ofrecerte, eres una niña increíble, con un alma preciosa, nunca dejes de ser esa personita tan maravillosa que eres, Mili, quiero que sepas que te quiero con toda mi alma, Mili, prometo apoyarte siempreeee, abrazarte muy fuerte cuando las cosas se pongan difíciles y estar siempre para ti, en todo momento, incondicionalmente y pase lo que pase. Eres de las más bonitas amistades que tengo en la vida y de las mejores. 💕 Con mucho cariño y admiración: Yuz. 😛</p></div></article>
+				<article class="card"><div class="photo"><img src="Schecid.jpeg" alt="Recuerdo con Amiga 4" loading="lazy"></div><div class="card-copy"><h3>Schecid</h3><p>Querida Mildred, la verdad no soy muy buena con las palabras, pero quiero decirte que realmente valoro tu amistad, eres una gran persona, una gran mujer y realmente espero tener una amistad larga contigo, quiero que sepas que pase lo que pase yo voy a estar siempre para ti de forma incondicional, que no importa lo que pase siempre estaré cualquier momento ya sea escuchando te, abrazándote o simplemente haciéndote reír, porque me encanta verte reír, tienes una hermosa sonrisa. Esa sonrisa que apesar de todo sigue estando ahí, te quiero demaciado Mildred. Feliz cumpleaños mensa 🫶🫶🫶</p></div></article>
+				<article class="card"><div class="photo"><img src="America.jpeg" alt="Recuerdo con Amiga 5" loading="lazy"></div><div class="card-copy"><h3>America</h3><p>Que se la pase increíble en su día, y que siga siendo igual de amable y amigable como siempre 🎉✨ PD: Jaja a pesar de abandonarnos en robótica jaja</p></div></article>
+				<article class="card"><div class="photo"><img src="Daniel.jpeg" alt="Recuerdo con Amiga 6" loading="lazy"></div><div class="card-copy"><h3>Daniel</h3><p>agradezco mucho haberla conocido porque es una gran amiga que no me arrepiento de haber conocido y que se le extraña muchísimo en el taller y compartir los viejos momentos en los viajes pasando el rato y divirtiendon pero que sin importar que es una gran amiga gracias Mili</p></div></article>
+				<article class="card"><div class="photo"><img src="Valentin.jpeg" alt="Recuerdo con Amiga 7" loading="lazy"></div><div class="card-copy"><h3>Valentin</h3><p>Fuerza Mili, algún día llegarás a ser presidenta y quizás formalices un gobierno comunista</p></div></article>
+				<article class="card"><div class="photo"><img src="Mildred5.jpeg" alt="Recuerdo con Amiga 8" loading="lazy"></div><div class="card-copy"><h3>Sofia</h3><p>Feliz cumpleaños,miliii 💗🎂🥳 Espero que hoy te la pases súper bonito, que seas muy feliz y que todos tus deseos se cumplan. Gracias por tu amistad y por todos los momentos bonitos que hemos compartido, espero me inviten a otra batalla épica de freefire. Te deseo muchísimas cosas lindas hoy y siempre, porque te mereces todo lo bueno del mundo. Nunca dejes de ser esa personita tan bonita que eres. Te quiero mucho y espero que cumplas muchísimos años más, llenos de amor, felicidad y personas que te quieran de verdad. 💗🫶🏻✨ Att: Sofi</p></div></article>
+				<article class="card"><div class="photo"><img src="Nadia.jpeg"Recuerdo con Amiga 9" loading="lazy"></div><div class="card-copy"><h3>Nadia</h3><p>Feliz cumpleaños mili  Espero y te la hayas pasado muy bien en tu día,sabes que yo siempre estaré para ti y Muchas gracias por estar junto a mi, más que una amistad eres como familia para mí, desde que te conocí me diste confianza, me gusta hablar contigo y siempre eres mi lugar seguro entre todos mis amigos, te quiero mucho y espero siempre seas mi mili</p></div></article>
+				<article class="card"><div class="photo"><img src="Karla.jpeg" alt="Recuerdo con Amiga 10" loading="lazy"></div><div class="card-copy"><h3>Karime</h3><p>Hoy es el cumple de una persona muy especial para todos nosotros. Eres de esas personas tan lindas como por dentro y por fuera, de las que iluminan el dia sin siquiera intentarlo. Gracias por ser esa niña tan especial, tan buena, tan tú. Te mereces todo lo bonito de este mundo, todo el amor, toda la felicidad y todos tus sueños cumplidos. Te quiero mucho preciosa, feliz cumpleaños a la persona más linda que conozco.Eres especial, eres de esas amistades que se Si todos vieran en ti lo que yo veo, entenderían por qué te apreciamos tanto. Eres noble, sincera, de corazón grande y eso vale oro hoy en día. Deseo de todo corazón que nunca olvides lo valiosa que eres para nosotros. Feliz cumpleaños bonita y recuerda lo mucho que te amamos pequeña, recuerda que te mereces lo mejor, siempre.</p></div></article>
+				<article class="card"><div class="photo"><img src="Azucena.jpeg" alt="Recuerdo con Amiga 11" loading="lazy"></div><div class="card-copy"><h3>Azucena (Franca)</h3><p>Quisiera decirle que es una gran persona y lo poco que he pasado con ella me he dado cuenta que no se necesita hablar ni platicar mucho para saber que una persona es buena y sincera, y que feliz cumpleaños</p></div></article>
+				<article class="card"><div class="photo"><img src="Karlaa.jpeg" alt="Recuerdo con Amiga 12" loading="lazy"></div><div class="card-copy"><h3>Karla</h3><p>Feliz cumpleañooooos, espero que te la hayas pasado super bien, no tuve tanto tiempo para poder conocerte pero con el poco que tuve me di cuenta de que eras una excelente amiga y persona, así que, cualquier cosa sabes que puedes contar conmigo. Muchas felicidadeeeees Mildreeeed!!! 🎂🎉</p></div></article>
+				<article class="card"><div class="photo"><img src="Mildred1.jpeg" alt="Recuerdo con Amiga 13" loading="lazy"></div><div class="card-copy"><h3>Emilio</h3><p>Feliz cumpleaños mildred, casi no te conozco ni tu a mi pero te quiero desear un feliz cumpleaños y que te la pases super bien en tu dia🥳🥳</p></div></article>
+				<article class="card"><div class="photo"><img src="Mildredaburrida.jpeg" alt="Recuerdo con Amiga 14" loading="lazy"></div><div class="card-copy"><h3>El pequeño franco mildreeeed</h3><p>Feliz cumple Mildred 🥳🥳... Un año menos de vida 💀💀</p></div></article>
+				<article class="card"><div class="photo"><img src="Mildred3.jpeg"Recuerdo con Amiga 15" loading="lazy"></div><div class="card-copy"><h3>Marbella</h3><p>Pues cuenta conmigo para lo que sea,que se le pase muy lindo y que siga cumpliendo más años</p></div></article>
+				<article class="card"><div class="photo"><img src="Joselyn.jpeg" alt="Recuerdo con Amiga 15" loading="lazy"></div><div class="card-copy"><h3>Joselyn</h3><p> Mili!! Te extraño mucho, uno en la uni se aburre mucho, te estoy esperando cuando te toque a ti entrar a la universidad, extraño reírnos cuando nos escondíamos en el baño jajaja. Cuando entraron Ilse y tú como si fueran spiderman jajaja muy divertido. Te quiero mucho, espero qué nos veamos</p></div></article>
+				<article class="card"><div class="photo"><img src="Mildred2.jpeg" alt="Recuerdo con Amiga 15" loading="lazy"></div><div class="card-copy"><h3>Johana</h3><p>Se ve que es muy buena persona y una buena amiga (PD: Lo es.)</p></div></article>
+				<article class="card"><div class="photo"><img src="Mireya.jpeg" alt="Recuerdo con Amiga 15" loading="lazy"></div><div class="card-copy"><h3>Mireya</h3><p>Te queremos almendra por siempre ser parte de nuestras choco aventuras</p></div></article>
+				<article class="card"><div class="photo"><img src="Mildred6.jpeg" alt="Recuerdo con Amiga 14" loading="lazy"></div><div class="card-copy"><h3>Renata</h3><p>le quiero decir que es una muy linda persona, no he hablado mucho con ella pero es una compañera muy agradable, siento que es alguien con la que puedes confiar plenamente y pues siento me gustaría hablar un poco más con ella jeje</p></div></article>
+				<article class="card"><div class="photo"><img src="Mildred7.jpeg" alt="Recuerdo con Amiga 14" loading="lazy"></div><div class="card-copy"><h3>Reni</h3><p>Milii feliz cumpleaños, espero que la hayas pasado muy bonito el día de hoy que sigas cumpliendo muchisisisiisisismos años más Mili, gracias por tu corazón tan bonito y por ser como eres, eres una persona que vale mil y que merece todo lo bonito de esta vida, muchísimas felicidades Mili, te quiero muchísimo:3</p></div></article>
+				<article class="card"><div class="photo"><img src="Kevin.jpeg" alt="Recuerdo con Amiga 14" loading="lazy"></div><div class="card-copy"><h3>Kevin</h3><p>Mildred se que cumples años y este momento es muy especial para ti, espero que te lo pases de lo mejor, se que apenas te conozco de hace unos pocos años, pero eres una amiga muy especial y te deseo lo mejor para ti en tu vida, te quiero muchísimo y que tengas el mejor día de tu vida, feliz cumpleaños mili te quiero muchísimo 😁😁😁🥳🥳🥳</p></div></article>
+			</div>
+		</section>
+	</main>
+
+	<footer>Hecho con <strong>♡</strong> por quienes lo darian todo por ti.</footer>
+	<script>
+		document.querySelectorAll('.photo img').forEach((image, index) => {
+			image.addEventListener('error', () => {
+				const frame = image.parentElement;
+				frame.classList.add('is-placeholder');
+				frame.dataset.label = `AQUÍ VA LA FOTO ${String(index + 1).padStart(2, '0')}`;
+				image.remove();
+			});
+		});
+	</script>
+    <audio id="musica" src="Music.wav" loop></audio>
+<script>
+	const musica = document.getElementById('musica');
+
+	// Intenta reproducir apenas carga la página
+	musica.play().catch(() => {
+		// Si el navegador lo bloquea, se reproduce al primer toque/clic/tecla
+		const iniciar = () => {
+			musica.play();
+			['click', 'touchstart', 'keydown'].forEach(e =>
+				document.removeEventListener(e, iniciar)
+			);
+		};
+		['click', 'touchstart', 'keydown'].forEach(e =>
+			document.addEventListener(e, iniciar)
+		);
+	});
+</script>
+</body>
+</html>
